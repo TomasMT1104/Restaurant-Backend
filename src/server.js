@@ -5,6 +5,9 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 1337;
 
+//Routers
+const restaurantrouter = require('./Routers/restaurantrouter.js');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
 
@@ -19,3 +22,5 @@ connection.sync()
     console.error('Error al sincronizar la base de datos:', error); 
     }); 
 
+// Api
+app.use('/api', restaurantrouter);
