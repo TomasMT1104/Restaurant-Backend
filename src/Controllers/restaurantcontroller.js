@@ -113,10 +113,39 @@ async function enableRestaurant(req, res) {
     }
 }
 
+async function getRestaurant(req, res){
+    try{
+        await restaurant.findOne({
+            where: {restaurantId : req.params.restaurantId},
+            attributes: [
+                'restaurantId',
+                'restaurantName',
+                'restaurantNit',
+                'restaurantAddress',
+                'restaurantPhone',
+                'cityId'
+            ],
+            //Falta traer el departmentId
+        }).then(function (data){
+            return res.status(200).json({
+                data: data
+            });
+        }).catch(error => {
+            return res.status(400).json({
+                error: error
+            });
+        })
+    }
+    catch(e){
+        console.log(e);
+    }
+}
+
 module.exports = {
     createRestaurant,
     listRestaurant,
     updateRestaurant,
     disableRestaurant,
-    enableRestaurant
+    enableRestaurant,
+    getRestaurant
 }

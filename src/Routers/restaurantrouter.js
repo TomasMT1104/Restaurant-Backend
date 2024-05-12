@@ -7,5 +7,6 @@ router.get('/listrestaurant', restaurantcontroller.listRestaurant);
 router.put('/updaterestaurant/:restaurantId', restaurantcontroller.updateRestaurant);
 router.put('/disablerestaurant/:restaurantId', restaurantcontroller.disableRestaurant);
 router.put('/enablerestaurant/:restaurantId', restaurantcontroller.enableRestaurant);
+router.put('/getrestaurant/:restaurantId', restaurantcontroller.getRestaurant)
 
 module.exports = router;
